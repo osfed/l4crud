@@ -28,6 +28,7 @@ $( document ).ready( function() {
 		  dataType:'json'
 		}).done(function( json ) 
 		{		
+			console.log(json);
 			form.find('div.alert').remove();	
 			$('.raw-error').html('');	
 			if (json['status'] && json['status'] == 1)
@@ -158,13 +159,12 @@ $( document ).ready( function() {
 		        	'field':field_id
 		        },
 		        start: function(e,data)
-		        {
+		        {		        	
 		        	$("#error_"+field_id).html('');
 		        	progress_cont.show();
 		        },
 		        done: function (e, data) {
-		        	progress_cont.hide();
-		        	
+		        	progress_cont.hide();		        	
 		        	if (data.result.status == 1)
 		        	{
 		        		item.hide();
@@ -186,13 +186,15 @@ $( document ).ready( function() {
 		        		$("#error_"+field_id).html('<div class="alert alert-danger">'+data.result.message+'</div>');
 		        	}
 		        },
-		        progressall: function (e, data) {
+		        progressall: function (e, data) {		        	
 		            var progress = parseInt(data.loaded / data.total * 100, 10);
 		            progress_cont.find('.progress-bar').css(
 		                'width',
 		                progress + '%'
 		            );
-		        }
+		        },
+		        fail: function(e, data){		        	
+		        },
 		    }).prop('disabled', !$.support.fileInput)
 		        .parent().addClass($.support.fileInput ? undefined : 'disabled');
 		});

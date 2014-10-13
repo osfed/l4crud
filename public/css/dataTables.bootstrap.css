@@ -54,6 +54,15 @@ table.dataTable thead .sorting_desc_disabled {
     cursor: pointer;
 }
 
+table.dataTable thead th{
+    vertical-align: top;
+    position: relative;
+}
+
+table.dataTable thead th span{
+    font-size: 10px;
+}
+
 table.dataTable thead .sorting {
     background: url('../images/sort_both.png') no-repeat center right;
 }

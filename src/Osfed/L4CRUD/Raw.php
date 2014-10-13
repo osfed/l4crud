@@ -15,7 +15,7 @@
  * @author     	Adrian Gheorghe <adi@adigheorghe.ro>
  */
 
-namespace Webtools\Raw;
+namespace Osfed\L4CRUD;
 
 use \Request;
 use \Schema;
@@ -23,7 +23,7 @@ use \DB;
 use \View;
 use \Validator;
 use \Input;
-use \Webtools;
+use \Osfed;
 
  
 Class Raw

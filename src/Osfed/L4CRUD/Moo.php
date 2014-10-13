@@ -73,7 +73,7 @@
  *
  */
 
-namespace Webtools\Raw;
+namespace Osfed\L4CRUD;
 
 class Moo
 {

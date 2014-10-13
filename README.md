@@ -1,40 +1,40 @@
 L4CRUD
 ===
 
-A CRUD package for Laravel. Using this you can create your entire c.r.u.d (Create Read Update Delete) interface in a matter of minutes
+Un paquete para Laravel 4 que se encarga de crear un C.R.U.D (Crear, Leer, Actualizar y Eliminar) entero en minutos.
 
-More info available on the library website http://raw.adigheorghe.ro
+Más información del paquete en http://raw.adigheorghe.ro
 
-Installation
+Instalación
 =============
 
-Run the following command in your laravel root directory
-> composer require osfed/l4crud
-> dev-master
+Agrega `osfed/l4crud` en  "requirement" en el archivo "composer.json" de tu aplicación Laravel:
 
-Or add `osfed/l4crud` as a requirement to `composer.json`:
+"osfed/l4crud" : "dev-master"
 
-"osfed/l4crud": "dev-master"
+Una vez que hayas realizado el paso anterior ejecuta siguiente comando en el directorio principal de tu aplicación Laravel:
 
-Once the package is installed you will need to add the service provider. Add the following in the `providers` section in app/config/app.php
+composer update
+
+Una vez que el paque este instalado el paquete necesitas agregar el "service provider". Aggrega la siguiente línea en la sección "providers" en el archivo app/config/app.php de tu proyecto Laravel.
 
 'Osfed\L4CRUD\RawServiceProvider'
 
-The package assets need to be published afterwards
+Los assets del paquete necesitan se públicos, para esto ejecuta el siguiente comando:
 
 php artisan asset:publish osfed/l4crud
 
-Documentation
+Documentación
 =============
 
-An sql file containing sample data is available in the package. 
+Hay un archivo sql contiene datos de ejemplo
 
- - yourinstallpath/vendor/Osfed/L4CRUD/raw.sql
+ - ruta_de_instalacion/vendor/Osfed/L4CRUD/raw.sql
 
-You need to import this file in your database and then you can access:
+Para ver el ejemplo completo necesitas importar el archivo anterior a tu base de datos, configurar la conexión y acceder al ejemplo desde:
 
- - yourinstallpath/raw_items
+ - http://localhost_o_ruta_de_tu_aplicacion/raw_items
 
-Example code is available by accessing
+El código de ejemplo está disponible en
 
  - vendor/Osfed/L4CRUD/src/controllers/RawController.php

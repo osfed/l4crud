@@ -19,7 +19,7 @@
             "src/controllers"
         ],
         "psr-0": {
-            "Webtools\\Raw\\": "src/"
+            "Osfed\\L4CRUD\\": "src/"
         }
     },
     "minimum-stability": "stable",

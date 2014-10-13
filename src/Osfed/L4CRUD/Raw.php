@@ -1168,27 +1168,27 @@ Class Raw
 		$this->css_files[] = 'packages/osfed/l4crud/js/select2/select2.css';
 
 		$this->css_files[] = 'packages/osfed/l4crud/css/tabledrag.css';
-		$this->css_files[] = 'packages/webtools/raw/css/dataTables.bootstrap.css';
-		$this->css_files[] = 'packages/webtools/raw/css/jquery.fileupload.css';
-		$this->css_files[] = 'packages/webtools/raw/css/raw.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/dataTables.bootstrap.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/jquery.fileupload.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/raw.css';
 
 		if (!in_array('jquery',$this->unset))
-			$this->js_files[] = 'packages/webtools/raw/js/jquery-1.10.2.js';
+			$this->js_files[] = 'packages/osfed/l4crud/js/jquery-1.10.2.js';
 		
 		if (!in_array('bootstrap',$this->unset))
-			$this->js_files[] = 'packages/webtools/raw/js/bootstrap.min.js';
+			$this->js_files[] = 'packages/osfed/l4crud/js/bootstrap.min.js';
 
-		$this->js_files[] = 'packages/webtools/raw/js/jquery.ui.widget.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.ui.widget.js';
 
-		$this->js_files[] = 'packages/webtools/raw/js/jquery.dataTables.js';
-		$this->js_files[] = 'packages/webtools/raw/js/dataTables.bootstrap.js';
-		$this->js_files[] = 'packages/webtools/raw/editor/ckeditor/ckeditor.js';
-		$this->js_files[] = 'packages/webtools/raw/editor/ckeditor/adapters/jquery.js';
-		$this->js_files[] = 'packages/webtools/raw/js/select2/select2.js';
-		$this->js_files[] = 'packages/webtools/raw/js/jquery.cookie.js';
-		$this->js_files[] = 'packages/webtools/raw/js/jquery.tabledrag.js';
-		$this->js_files[] = 'packages/webtools/raw/js/jquery.fileupload.js';
-		$this->js_files[] = 'packages/webtools/raw/js/raw.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.dataTables.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/dataTables.bootstrap.js';
+		$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/ckeditor.js';
+		$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/adapters/jquery.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/select2/select2.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.cookie.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.tabledrag.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.fileupload.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/raw.js';
 	}
 
 	private function sort_tree($items)

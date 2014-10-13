@@ -7,10 +7,6 @@
         {
             "name": "Osfed Chino",
             "email": "osfedx@gmail.com"
-        },
-        {
-            "name": "Adrian Gheorghe",
-            "email": "adrian.gheorghe02@gmail.com"
         }
     ],
     "require": {
@@ -28,7 +24,6 @@
     },
     "minimum-stability": "stable",
      "license": [
-       "LGPL-2.1",
-       "GPL-3.0+"
+       "MIT"
     ]
 }

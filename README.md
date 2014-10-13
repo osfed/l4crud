@@ -1,4 +1,4 @@
-Raw
+L4CRUD
 ===
 
 A CRUD package for Laravel. Using this you can create your entire c.r.u.d (Create Read Update Delete) interface in a matter of minutes
@@ -12,9 +12,9 @@ Run the following command in your laravel root directory
 > composer require webtools/raw
 > dev-master
 
-Or add `webtools/raw` as a requirement to `composer.json`:
+Or add `osfed/l4crud` as a requirement to `composer.json`:
 
-"webtools/raw": "dev-master"
+"osfed/l4crud": "dev-master"
 
 Once the package is installed you will need to add the service provider. Add the following in the `providers` section in app/config/app.php
 
@@ -22,7 +22,7 @@ Once the package is installed you will need to add the service provider. Add the
 
 The package assets need to be published afterwards
 
-php artisan asset:publish webtools/raw
+php artisan asset:publish osfed/l4crud
 
 Documentation
 =============

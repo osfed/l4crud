@@ -1163,11 +1163,11 @@ Class Raw
 	private function resources()
 	{
 		if (!in_array('bootstrap',$this->unset))
-			$this->css_files[] = 'packages/webtools/raw/css/bootstrap.min.css';
+			$this->css_files[] = 'packages/osfed/l4crud/css/bootstrap.min.css';
 		
-		$this->css_files[] = 'packages/webtools/raw/js/select2/select2.css';
+		$this->css_files[] = 'packages/osfed/l4crud/js/select2/select2.css';
 
-		$this->css_files[] = 'packages/webtools/raw/css/tabledrag.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/tabledrag.css';
 		$this->css_files[] = 'packages/webtools/raw/css/dataTables.bootstrap.css';
 		$this->css_files[] = 'packages/webtools/raw/css/jquery.fileupload.css';
 		$this->css_files[] = 'packages/webtools/raw/css/raw.css';

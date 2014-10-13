@@ -926,9 +926,7 @@ Class Raw
 
 			   								// resize
 			   								//include_once('Moo.php');
-											$p = public_path().$field['upload_path'];
-			   								// resize
-			   								//include_once('Moo.php');											
+											$p = public_path().$field['upload_path'];			   																		
 
 			   								$moo = new Moo();			   								
 		   									$moo

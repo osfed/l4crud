@@ -2,7 +2,7 @@
     "name": "osfed/l4crud",
     "description": "Un CRUD para Laravel parecido a Grocery CRUD de Codeigniter",
     "keywords": ["laravel", "crud", "autocrud","administration"],
-    "version": "0.1.0",
+    "version": "0.1.1",
     "authors": [
         {
             "name": "Osfed Chino",

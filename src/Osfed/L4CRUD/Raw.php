@@ -926,13 +926,15 @@ Class Raw
 
 			   								// resize
 			   								//include_once('Moo.php');
+											$p = public_path().$field['upload_path'];
+			   								// resize
+			   								//include_once('Moo.php');											
 
-			   								$moo = new Moo();
-
-			   								$moo
-											->load('/'.$field['upload_path'], $filename)
-											->resize_crop($dimensions[0],$dimensions[1])
-											->save('/'.$field['upload_path'].'/'.$th.'/'.$filename);
+			   								$moo = new Moo();			   								
+		   									$moo
+												->load($p.'/'.$filename)
+												->resize_crop($dimensions[0],$dimensions[1])
+												->save($p.'/'.$th.'/'.$filename);
 
 											$view = View::make('raw::fields.upload_row', array('raw'=>$this,'field'=>$field,'key'=>Input::get('field'),'value'=>$filename))->render();
 											$response = array('status'=>1,'file'=>$filename,'message'=>$this->strings['file_upload_success'],'response'=>$view);

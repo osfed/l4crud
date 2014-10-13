@@ -9,7 +9,7 @@ class RawController extends Controller {
 
 	public function index()
 	{
-		$raw = new Webtools\Raw\Raw('list',false,$this);
+		$raw = new Osfed\L4CRUD\Raw('list',false,$this);
 
 		$raw->setTable('raw_actor');
 		$raw->order('last_update','asc');
@@ -56,7 +56,7 @@ class RawController extends Controller {
 
 	public function actors($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_actor');
 		$raw->order('last_update','asc');
@@ -91,7 +91,7 @@ class RawController extends Controller {
    
 	public function customers($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_customer');
 		$raw->order('last_name','asc');
@@ -133,7 +133,7 @@ class RawController extends Controller {
 
 	public function films($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_film');
 		$raw->order('title','asc');
@@ -179,7 +179,7 @@ class RawController extends Controller {
 
 	public function languages($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_language');
 		$raw->order('name','asc');
@@ -211,7 +211,7 @@ class RawController extends Controller {
 
 	public function countries($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_country');
 		$raw->order('country','asc');
@@ -243,7 +243,7 @@ class RawController extends Controller {
 
    	public function rental($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_rental');
 		$raw->order('last_update','desc');
@@ -279,7 +279,7 @@ class RawController extends Controller {
 
    	public function payment($action = false,$id = false)
 	{
-		$raw = new Webtools\Raw\Raw($action,$id,$this);
+		$raw = new Osfed\L4CRUD\Raw($action,$id,$this);
 
 		$raw->setTable('raw_country');
 		$raw->order('country','asc');

@@ -9,7 +9,7 @@ Installation
 =============
 
 Run the following command in your laravel root directory
-> composer require webtools/raw
+> composer require osfed/l4crud
 > dev-master
 
 Or add `osfed/l4crud` as a requirement to `composer.json`:
@@ -18,7 +18,7 @@ Or add `osfed/l4crud` as a requirement to `composer.json`:
 
 Once the package is installed you will need to add the service provider. Add the following in the `providers` section in app/config/app.php
 
-'Webtools\Raw\RawServiceProvider'
+'Osfed\L4CRUD\RawServiceProvider'
 
 The package assets need to be published afterwards
 
@@ -29,7 +29,7 @@ Documentation
 
 An sql file containing sample data is available in the package. 
 
- - yourinstallpath/vendor/webtools/raw/raw.sql
+ - yourinstallpath/vendor/Osfed/L4CRUD/raw.sql
 
 You need to import this file in your database and then you can access:
 
@@ -37,4 +37,4 @@ You need to import this file in your database and then you can access:
 
 Example code is available by accessing
 
- - vendor/webtools/raw/src/controllers/RawController.php
+ - vendor/Osfed/L4CRUD/src/controllers/RawController.php

@@ -42,10 +42,10 @@
                                                 echo $item->$key_relation;
                                             }
                                             else if ($field['type'] == 'upload')
-                                            {
+                                            {                                                
                                                 if (isset($field['preset']) && $field['preset'] == 'image')
                                                 {
-                                                    if ($item->$key_field!='' && file_exists($field['upload_path'].'/'.$item->$key_field))
+                                                    if ($item->$key_field!='' && file_exists(public_path().$field['upload_path'].'/'.$item->$key_field))
                                                     {
                                                         echo '<a href="#" data-toggle="modal" data-target="#image-'.md5($item->$key_field).'"><img width="100" src="'.URL::to($field['upload_path'].'/'.$item->$key_field).'" alt=""/></a>';
                                                         echo '<div class="modal fade" id="image-'.md5($item->$key_field).'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

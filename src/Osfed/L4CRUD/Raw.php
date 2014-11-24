@@ -848,12 +848,11 @@ Class Raw
 		
 		$response = array('status'=>0,'message'=>$this->strings['file_none']);
 		if (isset($this->fields[Input::get('field')]))
-		{
-
+		{						
 			$field = $this->fields[Input::get('field')];
 			$upload = true;
 			if (Input::hasFile(Input::get('field')) && isset($field['upload_path']))
-			{
+			{				
 			    // file loaded
 			    // check issues
 			    $file = Input::file(Input::get('field'));
@@ -883,22 +882,21 @@ Class Raw
 					$upload = false;
 				}
 
-				if ($file->getSize() > $max_file_size*1024)
+				if ($file->getSize() > $max_file_size*4096)
 				{
 			   		$response = array('status'=>0,'message'=>'file_size');
 					$upload = false;
 				}
 			   
 			   	if ($upload )
-			   	{
+			   	{			   					   		
 			   		$filename = md5($file->getClientOriginalName().time().rand(0,1000)).'.'.$file->getClientOriginalExtension();
 			   		$upload_success = Input::file(Input::get('field'))->move(public_path().'/'.$field['upload_path'], $filename);
 			   		if ($upload_success)
-			   		{
-			   			//Webtools::pre( Input::file(Input::get('field')));
-
+			   		{			   			
+			   			//Webtools::pre( Input::file(Input::get('field')));			   			
 			   			if (in_array($file->getClientOriginalExtension(),array('jpg','jpeg','png','gif')))
-			   			{
+			   			{			   				
 			   				// image resize
 			   				// must be done with an external library
 			   				if (isset($field['thumbs']))
@@ -939,7 +937,20 @@ Class Raw
 			   							}
 			   						}
 			   					}
+			   					else
+				   				{
+									$view = View::make('raw::fields.upload_row', array('raw'=>$this,'field'=>$field,'key'=>Input::get('field'),'value'=>$filename))->render();
+									$response = array('status'=>1,'file'=>$filename,'message'=>$this->strings['file_upload_success'],'response'=>$view);			   					
+				   				}
+			   				}else
+			   				{
+			   					$view = View::make('raw::fields.upload_row', array('raw'=>$this,'field'=>$field,'key'=>Input::get('field'),'value'=>$filename))->render();								
+			   					$response = array('status'=>1,'file'=>$filename,'message'=>$this->strings['file_upload_success'],'response'=>$view);			   									   					
 			   				}
+			   			}
+			   			else
+			   			{
+			   				$response = array('status'=>1,'file'=>$filename,'message'=>$this->strings['file_upload_success'],'response'=>$filename);
 			   			}
 			   		}
 			   		else
@@ -1056,34 +1067,34 @@ Class Raw
 	public function getStrings()
 	{
 		return array(
-				'actions' => 'Actions',
-				'please_select' => 'Please Select',
-				'true' => 'True',
-				'false' => 'False',
-				'item_edit' => 'Edit Item',
-				'item_add' => 'Add Item',
-				'item_view' => 'View Item',
-				'item_delete' => 'Delete Item',
-				'item_list' => 'List Items',
-				'submit' => 'Submit',
-				'submit_continue' => 'Submit and continue',
-				'reset' => 'Reset',
-				'success_add' => 'The record has been successfully added',
-				'success_edit' => 'The record has been successfully updated',
-				'success_order' => 'The order of the records has been updated',
-				'-' => 'Value not set',
-				'file_none' => 'No file sent',
-				'file_extensions' => 'The file extension is not permitted',
-				'file_size' => 'The file size is too large',
-				'file_size' => 'The file upload failed. Please try again!',
-				'file_delete' => 'Delete',
-				'add_files' => 'Add files',
-				'confirm' => 'Are you sure?',
-				'file_upload_failed' => 'File upload error',
-				'file_upload_success' => 'File uploaded successfully',
-				'no_item' => 'There is no item',
-				'item_deleted' => 'The item has been deleted',
-				'confirm' => 'Confirm',
+				'actions' => 'Acciones',
+				'please_select' => 'Selecciona un opción',
+				'true' => 'Si',
+				'false' => 'No',
+				'item_edit' => 'Editar',
+				'item_add' => 'Nuevo',
+				'item_view' => 'Ver',
+				'item_delete' => 'Borrar',
+				'item_list' => 'Todos',
+				'submit' => 'Enviar',
+				'submit_continue' => 'Enviar y continuar',
+				'reset' => 'Resetear',
+				'success_add' => 'Se ha registrado correctamente',
+				'success_edit' => 'El registro se actuallizó correctamente',
+				'success_order' => 'El orden de los registros se ha actualizado',
+				'-' => 'Valor no asignado',
+				'file_none' => 'Archivo no enviado',
+				'file_extensions' => 'El tipo de archivo no es permitido',
+				'file_size' => 'El archivo es más pesado de lo permitido',
+				'file_size' => 'La subida de archivo falló, por favor intente nuevamente',
+				'file_delete' => 'Borrar',
+				'add_files' => 'Agregar archivo',
+				'confirm' => '¿Está seguro?',
+				'file_upload_failed' => 'Error al actualizar el archivo',
+				'file_upload_success' => 'El archivo se actualizó correctamente',
+				'no_item' => 'Ho hay elementos',
+				'item_deleted' => 'El elemento ha sido eliminado',
+				'confirm' => 'Confirmar',
 		);
 	}
 

@@ -895,7 +895,7 @@ Class Raw
 			   		if ($upload_success)
 			   		{			   			
 			   			//Webtools::pre( Input::file(Input::get('field')));			   			
-			   			if (in_array($file->getClientOriginalExtension(),array('jpg','jpeg','png','gif')))
+			   			if (in_array($file->getClientOriginalExtension(),array('jpg','jpeg','png','gif','JPG','JPEG','PNG','GIF')))
 			   			{			   				
 			   				// image resize
 			   				// must be done with an external library

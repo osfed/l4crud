@@ -11,7 +11,7 @@ if (isset($raw->item->$key))
     	<?php 
     		if (isset($field['preset']) && $field['preset'] == 'image')
             {
-                if ($raw->item->$key !='' && file_exists($field['upload_path'].'/'.$value))
+                if ($raw->item->$key !='' && file_exists(public_path().$field['upload_path'].'/'.$value))
                 {
                     echo '<a href="#" data-toggle="modal" data-target="#image-'.md5($value).'"><img width="100" src="'.URL::to($field['upload_path'].'/'.$value).'" alt=""/></a>';
                     echo '<div class="modal fade" id="image-'.md5($value).'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -56,9 +56,10 @@ if (isset($raw->item->$key))
 			<?php
 			echo '<tr>';
 			if (isset($field['preset']) && $field['preset'] == 'image' && $raw->item)
-	        {	        	
-	            if ($raw->item->$key !='' && file_exists($field['upload_path'].'/'.$value))
-	            {
+	        {	 
+								
+	            if ($raw->item->$key !='' && file_exists(public_path().$field['upload_path'].'/'.$value))
+	            {	            	
 	                echo '<td width="80%"><a href="#" data-toggle="modal" data-target="#image-'.md5($value).'"><img width="100" src="'.URL::to($field['upload_path'].'/'.$value).'" alt=""/></a>';
 	                echo '<div class="modal fade" id="image-'.md5($value).'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	                    <div class="modal-dialog">

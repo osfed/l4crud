@@ -71,6 +71,7 @@ Class Raw
 
 	public 	$css_files = array();
 	public 	$js_files = array();
+	public 	$js_extra_files = array();
 	public  $output;
 
 	public 	$order = array();
@@ -99,6 +100,7 @@ Class Raw
 			$this->path = str_replace('/'.$this->state,'',$uri);
 
 		$this->setTabs();
+		$this->resources();
 	}
 
 	public static function make($state = false,$id = false,$class)
@@ -598,7 +600,7 @@ Class Raw
 	public function render()
 	{
 		$this->unify();
-		$this->resources();
+		//$this->resources();
 
 		/* Redo tabs */
 		$tabs = $this->getTabs();
@@ -895,7 +897,7 @@ Class Raw
 			   		if ($upload_success)
 			   		{			   			
 			   			//Webtools::pre( Input::file(Input::get('field')));			   			
-			   			if (in_array($file->getClientOriginalExtension(),array('jpg','jpeg','png','gif','JPG','JPEG','PNG','GIF')))
+			   			if (in_array($file->getClientOriginalExtension(),array('jpg','jpeg','JPG','JPEG','PNG','png','gif','GIF')))
 			   			{			   				
 			   				// image resize
 			   				// must be done with an external library
@@ -1164,26 +1166,32 @@ Class Raw
 	{
 
 		if (!in_array('view',$this->unset))
-			$this->actions[] = array('class'=>"glyphicon glyphicon-info-sign raw-view", 'url'=>$this->path.'/view/%d');
+			$this->actions[] = array('title' => 'Ver','class'=>"raw-view", 'url'=>$this->path.'/view/%d', 'span' => 'glyphicon glyphicon-info-sign');
         if (!in_array('edit',$this->unset))
-			$this->actions[] = array('class'=>"glyphicon glyphicon-pencil raw-edit", 'url'=>$this->path.'/edit/%d');
+			$this->actions[] = array('title' => 'Editar','class'=>"raw-edit", 'url'=>$this->path.'/edit/%d', 'span' => 'glyphicon glyphicon-pencil');
        	if (!in_array('delete',$this->unset))
-			$this->actions[] = array('class'=>"glyphicon glyphicon-remove raw-delete", 'url'=>$this->path.'/delete/%d','data-rel'=>'redirect','data-redirect'=>'/'.$this->path);
+			$this->actions[] = array('title' => 'Eliminar','class'=>"raw-delete", 'url'=>$this->path.'/delete/%d','data-rel'=>'redirect','data-redirect'=>'/'.$this->path, 'span' => 'glyphicon glyphicon-remove');
 	}
 
 	private function resources()
 	{
+		$this->css_files[] = 'packages/osfed/l4crud/css/adminTemplate.css';
+
 		if (!in_array('bootstrap',$this->unset))
 			$this->css_files[] = 'packages/osfed/l4crud/css/bootstrap.min.css';
 		
+		$this->css_files[] = 'packages/osfed/l4crud/css/raw.css';
 		$this->css_files[] = 'packages/osfed/l4crud/js/select2/select2.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/bootstrap-datetimepicker.min.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/tabledrag.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/font-awesome.min.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/dataTables.bootstrap.css';
-		$this->css_files[] = 'packages/osfed/l4crud/css/jquery.fileupload.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/jquery.fileupload.css';		
+		$this->css_files[] = 'packages/osfed/l4crud/css/sweet-alert.css';		
 		$this->css_files[] = 'packages/osfed/l4crud/css/raw.css';
 
+		$this->js_files[] = 'packages/osfed/l4crud/js/sweet-alert.min.js';		
+		
 		if (!in_array('jquery',$this->unset))
 			$this->js_files[] = 'packages/osfed/l4crud/js/jquery-1.11.1.min.js';
 		

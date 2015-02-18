@@ -54,16 +54,23 @@ $( document ).ready( function() {
 	$('#raw-list').on('click','a.raw-delete',function(e){
 		e.preventDefault();
 
-		if (confirm(raw_confirm))
-		{
-
-			var redirect = $(this).attr('data-rel');
+		var $this = $(this);		
+		swal({
+		   title: "¿Estás seguro?",   
+		   text: "¿Deseas eliminar este elemento?",   
+		   type: "warning",   
+		   showCancelButton: true,   
+		   confirmButtonColor: "#DD6B55",   
+		   confirmButtonText: "Eliminar",   
+		   closeOnConfirm: false 
+		}, function(){  
+			var redirect = $this.attr('data-rel');
 			if (redirect == 'redirect')
 			{
-				var redirect_path = $(this).attr('data-redirect');
+				var redirect_path = $this.attr('data-redirect');
 			}
 			var list = $('#raw-list');
-			var item = $(this);
+			var item = $this;
 			
 			$.ajax({
 				type: "POST",
@@ -76,7 +83,7 @@ $( document ).ready( function() {
 				$('.raw-error').html('');
 
 				if (json['status'] && json['status'] == 1)
-				{
+				{					
 					list.parent().prepend('<div class="alert alert-success">'+json['message']+'</div>');
 					if (redirect == 'redirect')
 					{
@@ -85,11 +92,12 @@ $( document ).ready( function() {
 				}
 				else
 				{
+					swal("Error!", json['message'], "error"); 
 					list.parent().prepend('<div class="alert alert-danger">'+json['message']+'</div>');
 				}
 				
-			});
-		}
+			}); 			
+		});
 		
 	});
 

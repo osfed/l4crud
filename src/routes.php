@@ -1,9 +1,6 @@
 <?php
-Route::match(array('GET', 'POST'),'raw_items/rental/{action?}/{id?}', array('uses' => 'RawController@rental'));
-Route::match(array('GET', 'POST'),'raw_items/payment/{action?}/{id?}', array('uses' => 'RawController@payment'));
-Route::match(array('GET', 'POST'),'raw_items/countries/{action?}/{id?}', array('uses' => 'RawController@countries'));
-Route::match(array('GET', 'POST'),'raw_items/languages/{action?}/{id?}', array('uses' => 'RawController@languages'));
-Route::match(array('GET', 'POST'),'raw_items/actors/{action?}/{id?}', array('uses' => 'RawController@actors'));
-Route::match(array('GET', 'POST'),'raw_items/customers/{action?}/{id?}', array('uses' => 'RawController@customers'));
-Route::match(array('GET', 'POST'),'raw_items/films/{action?}/{id?}', array('uses' => 'RawController@films'));
-Route::match(array('GET', 'POST'),'raw_items/', array('uses' => 'RawController@index'));
+
+	Route::get('/admin', array('before' => 'auth', 'as' => 'admin', 'uses' => 'RawController@Welcome'));
+	Route::get('/logout', array('as' => 'salir', 'uses' => 'RawController@Logout'));
+	Route::get('/login', array('as' => 'login', 'uses' => 'RawController@Login'));
+	Route::post('/login', 'RawController@LoginPost');

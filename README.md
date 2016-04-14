@@ -24,6 +24,13 @@ Los assets del paquete necesitan se públicos, para esto ejecuta el siguiente co
 
 php artisan asset:publish osfed/l4crud
 
+Migrar la base de datos con el comando:
+
+php artisan migrate --package="osfed/l4crud"
+
+El usuario para ingresar es: admin
+La contraseña para ingresar es: admin
+
 Documentación
 =============
 

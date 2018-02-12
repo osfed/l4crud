@@ -686,7 +686,7 @@ Class Raw
 			{
 				$values = array();
 
-				$weight = Input::get('item-'.$item->{$this->primary_key}.'-weight');
+				$weight = Input::get('item-'.$item->{$this->primary_key}.'-id');
 				$parent = str_replace('item-','',Input::get('item-'.$item->{$this->primary_key}.'-parent'));
 				
 				$update = array();
@@ -717,6 +717,7 @@ Class Raw
 			return View::make('raw::list_order', array('raw'=>$this))->render();
 		}
 	}
+	
 
 	private function render_add()
 	{
@@ -1180,6 +1181,9 @@ Class Raw
 		if (!in_array('bootstrap',$this->unset))
 			$this->css_files[] = 'packages/osfed/l4crud/css/bootstrap.min.css';
 		
+		$this->css_files[] = 'packages/osfed/l4crud/bower_components/medium-editor/dist/css/medium-editor.min.css';
+		$this->css_files[] = 'packages/osfed/l4crud/bower_components/medium-editor/dist/css/themes/default.css';
+		$this->css_files[] = 'packages/osfed/l4crud/bower_components/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/raw.css';
 		$this->css_files[] = 'packages/osfed/l4crud/js/select2/select2.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/bootstrap-datetimepicker.min.css';
@@ -1187,7 +1191,10 @@ Class Raw
 		$this->css_files[] = 'packages/osfed/l4crud/css/font-awesome.min.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/dataTables.bootstrap.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/jquery.fileupload.css';		
-		$this->css_files[] = 'packages/osfed/l4crud/css/sweet-alert.css';		
+		$this->css_files[] = 'packages/osfed/l4crud/css/sweet-alert.css';
+		$this->css_files[] = 'packages/osfed/l4crud/css/jquery.tagsinput.css';	
+		$this->css_files[] = 'packages/osfed/l4crud/css/trumbowyg.min.css';		
+		$this->css_files[] = 'packages/osfed/l4crud/js/plugins/colors/ui/trumbowyg.colors.css';
 		$this->css_files[] = 'packages/osfed/l4crud/css/raw.css';
 
 		$this->js_files[] = 'packages/osfed/l4crud/js/sweet-alert.min.js';		
@@ -1200,17 +1207,29 @@ Class Raw
 
 		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.ui.widget.js';
 
-
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/medium-editor/dist/js/medium-editor.js';
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/handlebars/handlebars.runtime.min.js';
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/jquery-sortable/source/js/jquery-sortable-min.js';
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js';
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js';
+		$this->js_files[] = 'packages/osfed/l4crud/bower_components/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js';
+		
 		$this->js_files[] = 'packages/osfed/l4crud/js/moment.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/spin.min.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/bootstrap-datetimepicker.min.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.dataTables.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/dataTables.bootstrap.js';
-		$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/ckeditor.js';
-		$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/adapters/jquery.js';
+		//$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/ckeditor.js';
+		//$this->js_files[] = 'packages/osfed/l4crud/editor/ckeditor/adapters/jquery.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/trumbowyg.min.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/plugins/colors/trumbowyg.colors.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/plugins/table/trumbowyg.table.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/select2/select2.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.cookie.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.tabledrag.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.fileupload.js';
+		$this->js_files[] = 'packages/osfed/l4crud/js/jquery.tagsinput.min.js';				
+		$this->js_files[] = 'packages/osfed/l4crud/js/spin.min.js';
 		$this->js_files[] = 'packages/osfed/l4crud/js/raw.js';
 	}
 

@@ -8,3 +8,6 @@
 	Route::match(array('GET', 'POST'),'/admin/tablas/{action?}/{id?}', array('before' => 'auth', 'uses' => 'RawController@Tablas'));
 	Route::match(array('GET', 'POST'),'/admin/usuarios/{action?}/{id?}', array('before' => 'auth', 'uses' => 'RawController@Usuarios'));
 	Route::match(array('GET', 'POST'),'/admin/usuario/{clave?}/{action?}/{id?}', array('before' => 'auth', 'uses' => 'RawController@UsuarioTabla'));
+
+	Route::post('/upload-images', array('as' => 'rawUploadImages', 'uses' => 'RawController@UploadImages'));
+	Route::post('/remove-images', array('as' => 'rawRemoveImages', 'uses' => 'RawController@RemoveImages'));

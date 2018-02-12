@@ -16,6 +16,9 @@ foreach($raw->css_files as $file): ?>
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="example">  
+	<div class="spin">
+        <div id="spin"></div>
+    </div> 
 	<header class="l4crud-header">
 		<figure>
 			<img src="{{asset('/packages/osfed/l4crud/images/logo.png')}}" alt="Quimaira">

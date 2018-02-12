@@ -613,7 +613,8 @@ class Moo
 
 		// create a temp based on new dimensions
 		$this->temp_image = imagecreatetruecolor($mw, $mh);
-
+		imagealphablending( $this->temp_image, false);
+		imagesavealpha( $this->temp_image, true);
 		// check it
 		if(!is_resource($this->temp_image))
 		{

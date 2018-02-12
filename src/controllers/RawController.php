@@ -188,4 +188,58 @@ class RawController extends Controller {
 		$this->layout = View::make($this->template_file, $data);
 	}
 
+	public function UploadImages()
+	{
+
+		try {
+
+			$files = Input::file('files');
+
+			$json = array(
+				'files' => array()
+			);
+
+			$destinationPath = public_path() . '/images/uploads/';
+
+			foreach($files as $file ){
+
+				$filename = md5('raw'.time().rand(0,1000)).'.'.$file->getClientOriginalExtension();
+
+				$json['files'][] = array(
+					//'url' => '/citek/images/uploads/'.$filename, //cloud
+					'url' => asset('/images/uploads/'.$filename), //producción & dev
+				);
+
+				$upload = $file->move($destinationPath, $filename);
+
+
+			}
+
+			return Response::json($json);
+
+		} catch (Exception $e) {
+			$mensaje = $e->getMessage();
+			//Log::info('xxxxxx:'.$mensaje);
+			return Response::json('Error', 400);
+		}
+
+	}
+
+	public function RemoveImages()
+	{
+		try {
+
+			$file = Input::get('file');
+			$destinationPath = public_path() . '/images/uploads/';
+			$file = $destinationPath . explode('/images/uploads/', $file)[1];
+			unlink($file);
+
+			return Response::json(array('estatus' => 200));
+
+		} catch (Exception $e) {
+			//return Response::json(array('estatus' => 500, 'mensaje' => $e->getMessage()));
+			return Response::json(array('estatus' => 500));
+		}
+	}
+
 }

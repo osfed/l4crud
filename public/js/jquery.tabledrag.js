@@ -15,7 +15,7 @@ var Drupal = {};
  * Plugin definition.
  */
 $.fn.tableDrag = function(settings) {
-  settings = $.extend({
+  settings = $.extend({    
     draggableClass: 'draggable',
     cookiePath: '/',
     group: {
@@ -698,7 +698,7 @@ Drupal.tableDrag.prototype.updateField = function (changedRow, group) {
   var rowSettings = this.rowSettings(group, changedRow);
 
   if (!rowSettings)
-	return false;
+  return false;
   // Set the row as its own target.
   if (rowSettings.relationship == 'self' || rowSettings.relationship == 'group') {
     var sourceRow = changedRow;
@@ -885,6 +885,25 @@ Drupal.tableDrag.prototype.onDrag = function () {
  * Stub function. Allows a custom handler when a row is dropped.
  */
 Drupal.tableDrag.prototype.onDrop = function () {
+  $indexRow = $(this)[0].oldRowElement.rowIndex
+  /*if($(this)[0].tableSettings.tabla != null && typeof $(this)[0].tableSettings.tabla != 'undefined')
+  {
+    $tabla = $(this)[0].tableSettings.tabla;
+    $.post('')  
+  }
+
+  
+  console.log($tabla);
+  console.log($indexRow);*/
+  $('tr.draggable').each(function(){
+    $(this).find('input.primary-id').val($(this).index()+1);    
+  });
+  /*$id_ = $(this)[0].oldRowElement.id  
+  $('#'+$id_).find('.primary-id').val($indexRow);
+  $('#'+$id_).next().find('.primary-id').val($indexRow);
+*/
+
+  
   return null;
 };
 

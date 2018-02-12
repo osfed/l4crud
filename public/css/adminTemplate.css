@@ -74,3 +74,47 @@ body{width:100%;min-width:960px;font-size:16px !important}.l4crud-login{padding:
 h1{
 	font-size: 18px!important;
 }
+
+.spin{
+	z-index :100000000;
+	position:fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .75);
+	display: none;
+}	
+
+form .checkbox-group
+{
+	 border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	padding: 10px;
+}
+
+form .checkbox-group .check{
+	display:  inline-block;
+	vertical-align:  top;
+	width: 50%;
+	margin: 10px 0;
+}
+
+form .checkbox-group .check label,
+form .checkbox-group .check input{
+	display:  inline-block;
+	vertical-align:  top;
+	margin-right: 5px;
+}
+
+.trumbowyg-editor table{
+	width: 100%;
+}
+
+.trumbowyg-editor table td{
+	border: 1px solid #0071A0;
+}
+
+.trumbowyg-table-button {
+	background: url('../images/table-grid.png') center center no-repeat!important;
+}

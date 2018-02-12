@@ -1,7 +1,106 @@
 var raw_confirm='';
 $( document ).ready( function() {
 
-	$( 'textarea.editor' ).ckeditor();
+	var opts = {
+	  lines: 13 // The number of lines to draw
+	, length: 28 // The length of each line
+	, width: 14 // The line thickness
+	, radius: 42 // The radius of the inner circle
+	, scale: 1 // Scales overall size of the spinner
+	, corners: 1 // Corner roundness (0..1)
+	, color: '#2980b9' // #rgb or #rrggbb or array of colors
+	, opacity: 0.25 // Opacity of the lines
+	, rotate: 0 // The rotation offset
+	, direction: 1 // 1: clockwise, -1: counterclockwise
+	, speed: 1 // Rounds per second
+	, trail: 60 // Afterglow percentage
+	, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+	, zIndex: 2e9 // The z-index (defaults to 2000000000)
+	, className: 'spinner' // The CSS class to assign to the spinner
+	, top: '50%' // Top position relative to parent
+	, left: '50%' // Left position relative to parent
+	, shadow: false // Whether to render a shadow
+	, hwaccel: false // Whether to use hardware acceleration
+	, position: 'absolute' // Element positioning
+	}
+
+	if($('#field_atiende').length)
+	{		
+		$('.spin').show();								
+		var target = document.getElementById('spin');
+		var spinner = new Spinner(opts).spin(target);
+		$.ajax({
+			type: "POST",           
+			url: 'https://servicio.ciatec.mx/Biblioteca/v1/WCF_Libros.svc/ConsultarEmpleados',
+			contentType: "application/json;charset=utf-8",
+			dataType: "json",
+			success: function (response) {
+				$empleados = $.parseJSON(response.d);
+				console.log($empleados);
+				$.each($empleados, function(key, value){	
+					var newOption = new Option(value.Empleado, value.Correo, true, true);
+					$("#field_atiende").append(newOption).trigger('change');									
+				});
+				$('.spin').hide();								
+			}
+		});
+		
+	}
+	
+	//$( 'textarea.editor' ).ckeditor();
+	$( 'textarea.editor' ).trumbowyg({
+		lang: 'es',		
+		btns: [	        
+
+	        ['formatting'],
+	        'btnGrp-semantic',
+	        ['superscript', 'subscript'],
+	        ['link'],	   
+	        ['table'],     
+	        'btnGrp-justify',
+	        'btnGrp-lists',	        
+	        ['removeformat'],	        
+	        ['foreColor', 'backColor'],
+	        //['fontfamily']
+	    ],	    
+	    btnsAdd: ['foreColor', 'backColor', 'table'],
+		plugins: {
+			colors: {
+				colorList: ['66d0ff', '00518c']
+			}
+		}
+	});
+
+	var post = new MediumEditor('.NewPost', {
+		placeholder : {
+			text : 'Escribe aquí tu post'
+		},
+		toolbar : {
+			allowMultiParagraphSelection: true,
+			buttons: ['bold', 'italic', 'underline', 'anchor', 'orderedlist','unorderedlist', 'h1']
+		},
+	});
+
+	$('.NewPost').mediumInsert({
+		editor: post,
+		enabled: true,				
+		addons : {
+			images: {
+				fileUploadOptions: {
+					url: $('.NewPost').data('action'),
+					acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+				},
+				deleteScript : $('.NewPost').data('remove'),				
+				uploadCompleted: function ($el, data) {
+					console.log($el);
+					console.log(data);
+				},
+				uploadError: function ($el, data) {
+					console.log(data);
+				}
+			}
+		}
+	});	
 
 
 	if ($('.raw-form select').length > 0)
@@ -18,8 +117,18 @@ $( document ).ready( function() {
 		{
 			var redirect_path = $(this).attr('data-redirect');
 		}
+
+		if($('.Post textarea').length)
+		{			
+			$('.Post textarea').val($('.Post .NewPost').html());
+		}
+
 		var form = $(this).parents('form');
 		var args = form.serializeArray();
+
+		$('.spin').show();								
+		var target = document.getElementById('spin');
+		var spinner = new Spinner(opts).spin(target);
 		
 		$.ajax({
 		  type: "POST",
@@ -27,8 +136,7 @@ $( document ).ready( function() {
 		  data: args,
 		  dataType:'json'
 		}).done(function( json ) 
-		{		
-			console.log(json);
+		{							
 			form.find('div.alert').remove();	
 			$('.raw-error').html('');	
 			if (json['status'] && json['status'] == 1)
@@ -38,6 +146,8 @@ $( document ).ready( function() {
 				{
 					window.location.href = redirect_path;
 				}
+				spinner.stop();
+				$('.spin').hide();
 				
 			}				 
 			else
@@ -46,8 +156,15 @@ $( document ).ready( function() {
 				{
 					$("#error_"+key).html('<div class="alert alert-danger">'+json['errors'][key].join('<br/>')+'</div>');
 				}
+				spinner.stop();
+				$('.spin').hide();
 			}
 			
+		})
+		.fail(function(data){		        	
+			console.log(data);
+			$('.spin').hide();
+			alert('Error');
 		});
 	});
 
@@ -135,13 +252,21 @@ $( document ).ready( function() {
 
 	/* Upload */
 	if ($('.raw-upload').length > 0)
-	{
+	{		
+
 		$('.raw-uploaded').on('click','a.btn.delete',function(e){
 			e.preventDefault();
+	
+
+			$this = $(this);
+			$parent = $(this).parents('.form-group');
 			if (confirm(raw_confirm))
 			{
-				$('.raw-uploaded').hide().find('table tr').remove();
-				$('.raw-upload').show();
+				$parent.find('.raw-uploaded').hide();//.find('table tr').remove();
+				$parent.find('.raw-upload').show();	
+
+				field_id = $parent.find('.raw-upload').data('field');				
+				$('#value-'+field_id).val('');
 			}
 		});
 
